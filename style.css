@@ -33,7 +33,7 @@ body {
 }
 
 .add-btn {
-  background: #007f86;
+  background: #072b36;
   color: #fff;
   padding: 10px 16px;
   border: none;
@@ -58,7 +58,7 @@ body {
 .task-status {
   width: 22px;
   height: 22px;
-  background: #0e7a29;
+  background: #0e882d;
   border-radius: 4px;
 }
 
@@ -70,7 +70,7 @@ body {
   margin-left: auto;
   width: 32px;
   height: 32px;
-  background: #d63f3f;
+  background: #e01515;
   color: white;
   border: none;
   border-radius: 4px;
