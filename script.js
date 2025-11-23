@@ -20,7 +20,7 @@ const render = () => {
     text.textContent = task.text;
 
     if (task.done) text.classList.add('done');
-
+   
     status.onclick = () => {
       task.done = !task.done;
       render();
