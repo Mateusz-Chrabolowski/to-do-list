@@ -11,12 +11,20 @@ const render = () => {
     const row = document.createElement('li');
     row.className = 'task-row';
 
-    const status = document.createElement('div');
+    const status = document.createElement('button');
     status.className = 'task-status';
+    status.textContent = task.done ? '✅' : '';
 
     const text = document.createElement('span');
     text.className = 'task-text';
-    text.textContent = task;
+    text.textContent = task.text;
+
+    if (task.done) text.classList.add('done');
+
+    status.onclick = () => {
+      task.done = !task.done;
+      render();
+    };
 
     const del = document.createElement('button');
     del.className = 'delete-task';
@@ -39,7 +47,7 @@ addBtn.addEventListener('click', () => {
   const value = input.value.trim();
   if (!value) return;
 
-  tasks.push(value);
+  tasks.push({ text: value, done: false });
   input.value = '';
   render();
 });
