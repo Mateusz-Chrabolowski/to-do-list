@@ -20,7 +20,7 @@ const render = () => {
 
     const del = document.createElement('button');
     del.className = 'delete-task';
-    del.textContent = '🗑️';
+    del.textContent = '❌';
 
     del.onclick = () => {
       tasks.splice(index, 1);
