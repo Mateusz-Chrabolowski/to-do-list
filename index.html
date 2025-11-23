@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lista zadań</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Ładujemy JS dopiero PO załadowaniu HTML -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <h1 class="title">Lista zadań</h1>
+
+  <section class="card">
+    <h2 class="card__title">Dodaj nowe zadanie</h2>
+    <input class="task-input" type="text" placeholder="Co jest do zrobienia?" />
+    <button class="add-btn">Dodaj</button>
+  </section>
+
+  <section class="card">
+    <h2 class="card__title">Lista zadań</h2>
+    <ul class="task-list"></ul>
+  </section>
+</body>
+</html>
