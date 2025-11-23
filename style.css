@@ -58,8 +58,15 @@ body {
 .task-status {
   width: 22px;
   height: 22px;
-  background: #0e882d;
+  background: #0e7a29;
   border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .task-text {
@@ -76,4 +83,9 @@ body {
   border-radius: 4px;
   cursor: pointer;
   font-size: 18px;
+}
+
+.task-text.done {
+  text-decoration: line-through;
+  opacity: 0.6;
 }
