@@ -46,3 +46,15 @@
   cursor: pointer;
   font-size: 18px;
 }
+
+.task-text {
+  font-size: 16px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  flex: 1;
+}
+
+.task-row {
+  flex-wrap: wrap;
+}
+
