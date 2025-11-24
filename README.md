@@ -3,4 +3,5 @@
 ### Demo 
 
 https://mateusz-chrabolowski.github.io/to-do-list/
-<img width="1866" height="541" alt="image" src="https://github.com/user-attachments/assets/304a519d-66dc-4133-8d85-e9f0018dcf29" />
+<img width="1855" height="452" alt="image" src="https://github.com/user-attachments/assets/5ee2ca72-484b-4e4c-bee6-aa6d91919a62" />
+
