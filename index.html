@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lista zadań</title>
-  <meta property="og:image" content="images/todolist.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/card.css">
@@ -15,15 +14,15 @@
 </head>
 <body>
   <h1 class="title">Lista zadań</h1>
-
   <section class="card">
     <h2 class="card__title">Dodaj nowe zadanie</h2>
-    <input class="task-input" type="text" placeholder="Jakie zadania musisz wykonać?" />
+ <form class="task-form" onsubmit="return false;">
+    <input class="task-input" type="text" placeholder="Jakie zadanie musisz wykonać?" />
     <button class="add-btn">Dodaj zadanie</button>
+</form>
   </section>
-
   <section class="card">
-    <h2 class="card__title">Lista zadań do wykonanania</h2>
+    <h2 class="card__title">Lista zadań do wykonania</h2>
     <ul class="task-list"></ul>
   </section>
 </body>
