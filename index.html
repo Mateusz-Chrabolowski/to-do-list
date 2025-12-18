@@ -13,18 +13,19 @@
   <link rel="stylesheet" href="css/tasks.css">
   <link rel="stylesheet" href="css/responsive.css">
   <script src="js/script.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 </head>
 <body>
   <h1 class="title">Lista zadań</h1>
   <section class="card">
     <h2 class="card__title">Dodaj nowe zadanie</h2>
  <form class="task-form" onsubmit="return false;">
-    <input class="task-input" type="text" placeholder="Jakie zadanie musisz wykonać?" />
+    <input class="task-input" type="text" placeholder="Co jest do zrobienia?" />
     <button class="add-btn">Dodaj zadanie</button>
 </form>
   </section>
   <section class="card">
-    <h2 class="card__title">Lista zadań do wykonania</h2>
+    <h2 class="card__title">Lista zadań</h2>
     <ul class="task-list"></ul>
   </section>
 </body>

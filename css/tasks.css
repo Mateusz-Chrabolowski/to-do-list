@@ -58,3 +58,30 @@
   flex-wrap: wrap;
 }
 
+.controls {
+  margin-left: auto;   
+  display: flex;
+  gap: 22px;
+}
+
+.controls button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  font-size: 18px;
+  font-weight: 300;
+  color: #77baca;
+
+  transition: color 0.25s ease;
+}
+
+.controls button:hover {
+  color: #036f8a;
+}
+
+.controls button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
