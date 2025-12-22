@@ -1,101 +1,162 @@
-let tasks = [];
-let showCompleted = true;
+// let tasks = [];
+// let showCompleted = true;
 
-const input = document.querySelector('.task-input');
-const addBtn = document.querySelector('.add-btn');
-const taskList = document.querySelector('.task-list');
+// const input = document.querySelector('.task-input');
+// const addBtn = document.querySelector('.add-btn');
+// const taskList = document.querySelector('.task-list');
 
 
-const controlsContainer = document.createElement('div');
-controlsContainer.className = "controls";
+// const controlsContainer = document.createElement('div');
+// controlsContainer.className = "controls";
 
-const toggleCompletedBtn = document.createElement('button');
-toggleCompletedBtn.className = "toggle-completed";
-toggleCompletedBtn.textContent = "Pokaż ukończone";
+// const toggleCompletedBtn = document.createElement('button');
+// toggleCompletedBtn.className = "toggle-completed";
+// toggleCompletedBtn.textContent = "Pokaż ukończone";
 
-const finishAllBtn = document.createElement('button');
-finishAllBtn.className = "finish-all";
-finishAllBtn.textContent = "Ukończ wszystkie";
+// const finishAllBtn = document.createElement('button');
+// finishAllBtn.className = "finish-all";
+// finishAllBtn.textContent = "Ukończ wszystkie";
 
-controlsContainer.append(toggleCompletedBtn, finishAllBtn);
+// controlsContainer.append(toggleCompletedBtn, finishAllBtn);
 
-const titleEl = document.querySelector('.card:last-of-type .card__title');
-titleEl.style.display = "flex";
-titleEl.style.alignItems = "center";
-titleEl.appendChild(controlsContainer);
+// const titleEl = document.querySelector('.card:last-of-type .card__title');
+// titleEl.style.display = "flex";
+// titleEl.style.alignItems = "center";
+// titleEl.appendChild(controlsContainer);
 
-function createTaskItem(task, index) {
-  const row = document.createElement('li');
-  row.className = 'task-row';
+// function createTaskItem(task, index) {
+//   const row = document.createElement('li');
+//   row.className = 'task-row';
 
-  const statusBtn = document.createElement('button');
-  statusBtn.className = 'task-status';
-  statusBtn.textContent = task.done ? '✓' : '';
+//   const statusBtn = document.createElement('button');
+//   statusBtn.className = 'task-status';
+//   statusBtn.textContent = task.done ? '✓' : '';
 
-  statusBtn.onclick = () => {
-    tasks = tasks.map((t, i) =>
-      i === index ? { ...t, done: !t.done } : t
-    );
-    render();
-  };
+//   statusBtn.onclick = () => {
+//     tasks = tasks.map((t, i) =>
+//       i === index ? { ...t, done: !t.done } : t
+//     );
+//     render();
+//   };
 
-  const textEl = document.createElement('span');
-  textEl.className = 'task-text';
-  textEl.textContent = task.text;
+//   const textEl = document.createElement('span');
+//   textEl.className = 'task-text';
+//   textEl.textContent = task.text;
 
-  if (task.done) textEl.classList.add('done');
+//   if (task.done) textEl.classList.add('done');
 
-  const deleteBtn = document.createElement('button');
-  deleteBtn.className = 'delete-task';
-  deleteBtn.textContent = '🗑';
+//   const deleteBtn = document.createElement('button');
+//   deleteBtn.className = 'delete-task';
+//   deleteBtn.textContent = '🗑';
 
-  deleteBtn.onclick = () => {
-    tasks = tasks.filter((_, i) => i !== index);
-    render();
-  };
+//   deleteBtn.onclick = () => {
+//     tasks = tasks.filter((_, i) => i !== index);
+//     render();
+//   };
 
-  row.append(statusBtn, textEl, deleteBtn);
-  return row;
-}
+//   row.append(statusBtn, textEl, deleteBtn);
+//   return row;
+// }
 
-function render() {
-  taskList.innerHTML = '';
+// function render() {
+//   taskList.innerHTML = '';
 
-  let visibleTasks = tasks;
-  if (!showCompleted) {
-    visibleTasks = tasks.filter(t => !t.done);
+//   let visibleTasks = tasks;
+//   if (!showCompleted) {
+//     visibleTasks = tasks.filter(t => !t.done);
+//   }
+
+//   visibleTasks.forEach((task, index) => {
+//     const realIndex = tasks.indexOf(task);
+//     taskList.appendChild(createTaskItem(task, realIndex));
+//   });
+
+//   const allDone = tasks.length > 0 && tasks.every(t => t.done);
+//   finishAllBtn.disabled = allDone;
+
+//   toggleCompletedBtn.textContent = showCompleted
+//     ? "Ukryj ukończone"
+//     : "Pokaż ukończone";
+// }
+
+// addBtn.addEventListener('click', () => {
+//   const text = input.value.trim();
+//   if (!text) return;
+
+//   tasks = [...tasks, { text, done: false }];
+//   input.value = '';
+//   render();
+// });
+
+// toggleCompletedBtn.addEventListener('click', () => {
+//   showCompleted = !showCompleted;
+//   render();
+// });
+
+// finishAllBtn.addEventListener('click', () => {
+//   tasks = tasks.map(t => ({ ...t, done: true }));
+//   render();
+// });
+
+// render();
+
+
+
+
+const tasks = [
+  {
+    content: "zrobić lekcje",
+    done: false,
+  },
+  {
+    content: "zjeść pierogi",
+    done: true,
+  },
+];
+
+const render = () => {
+  let htmlString = "";
+
+  for (const task of tasks) {
+    htmlString += `
+      <li ${task.done ? 'style="text-decoration: line-through"' : ""}>
+        ${task.content}
+      </li>
+    `;
   }
 
-  visibleTasks.forEach((task, index) => {
-    const realIndex = tasks.indexOf(task);
-    taskList.appendChild(createTaskItem(task, realIndex));
+  document.querySelector(".task-list").innerHTML = htmlString;
+};
+
+const addNewTask = (newTaskContent) => {
+  tasks.push({
+    content: newTaskContent,
+    done: false,
   });
 
-  const allDone = tasks.length > 0 && tasks.every(t => t.done);
-  finishAllBtn.disabled = allDone;
-
-  toggleCompletedBtn.textContent = showCompleted
-    ? "Ukryj ukończone"
-    : "Pokaż ukończone";
-}
-
-addBtn.addEventListener('click', () => {
-  const text = input.value.trim();
-  if (!text) return;
-
-  tasks = [...tasks, { text, done: false }];
-  input.value = '';
   render();
-});
+};
 
-toggleCompletedBtn.addEventListener('click', () => {
-  showCompleted = !showCompleted;
+const init = () => {
   render();
-});
 
-finishAllBtn.addEventListener('click', () => {
-  tasks = tasks.map(t => ({ ...t, done: true }));
-  render();
-});
+  const form = document.querySelector(".task-form");
 
-render();
+  form.onsubmit = (event) => {
+    event.preventDefault();
+
+    const newTaskContent = document
+      .querySelector(".task-input")
+      .value
+      .trim();
+
+    if (newTaskContent === "") {
+      return;
+    }
+
+    addNewTask(newTaskContent);
+    document.querySelector(".task-input").value = "";
+  };
+};
+
+init();
