@@ -121,11 +121,21 @@ const render = () => {
     htmlString += `
       <li ${task.done ? 'style="text-decoration: line-through"' : ""}>
         ${task.content}
+        <button class=" js-remove" >usuń</button> 
       </li>
     `;
   }
 
   document.querySelector(".task-list").innerHTML = htmlString;
+
+  const removeButtons = document.querySelectorAll(".js-remove");
+
+  removeButtons.forEach((removeButton, index) => {
+    removeButton.addEventListener("click", () => {
+      tasks.splice(index, 1);
+      render();
+    });
+  });
 };
 
 const addNewTask = (newTaskContent) => {
@@ -134,6 +144,11 @@ const addNewTask = (newTaskContent) => {
     done: false,
   });
 
+  render();
+};
+
+const removeTask = (index) => {
+  tasks.splice(index, 1);
   render();
 };
 
