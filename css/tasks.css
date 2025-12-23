@@ -48,10 +48,12 @@
 }
 
 .task-text {
+  min-width: 0;
   font-size: 18px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   flex: 1;
+  overflow-wrap: anywhere;
 }
 
 .task-row {
