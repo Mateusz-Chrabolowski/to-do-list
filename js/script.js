@@ -102,7 +102,7 @@
 
 
 
-
+{
 const tasks = [
   {
     content: "zrobić lekcje",
@@ -193,3 +193,4 @@ const init = () => {
 };
 
 init();
+}
