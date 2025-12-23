@@ -114,30 +114,6 @@ const tasks = [
   },
 ];
 
-const render = () => {
-  let htmlString = "";
-
-  for (const task of tasks) {
-    htmlString += `
-      <li ${task.done ? 'style="text-decoration: line-through"' : ""}>
-        ${task.content}
-        <button class=" js-remove" >usuń</button> 
-      </li>
-    `;
-  }
-
-  document.querySelector(".task-list").innerHTML = htmlString;
-
-  const removeButtons = document.querySelectorAll(".js-remove");
-
-  removeButtons.forEach((removeButton, index) => {
-    removeButton.addEventListener("click", () => {
-      tasks.splice(index, 1);
-      render();
-    });
-  });
-};
-
 const addNewTask = (newTaskContent) => {
   tasks.push({
     content: newTaskContent,
@@ -150,6 +126,43 @@ const addNewTask = (newTaskContent) => {
 const removeTask = (index) => {
   tasks.splice(index, 1);
   render();
+}
+
+const toggleTaskDone = (taskIndex) => {
+  tasks[taskIndex].done = !tasks[taskIndex].done;
+  render();
+}
+ 
+const render = () => {
+  let htmlString = "";
+
+  for (const task of tasks) {
+    htmlString += `
+      <li ${task.done ? 'style="text-decoration: line-through"' : ""}>
+        ${task.content}
+        <button class=" js-done">zrobione?</button>
+        <button class=" js-remove" >usuń</button> 
+      </li>
+    `;
+  }
+
+  document.querySelector(".task-list").innerHTML = htmlString;
+
+  const removeButtons = document.querySelectorAll(".js-remove");
+
+  removeButtons.forEach((removeButton, index) => {
+    removeButton.addEventListener("click", () => {
+      removeTask(index);
+    });
+  });
+
+  const toggleDoneButton = document.querySelectorAll(".js-done");
+
+  toggleDoneButton.forEach((toggleDoneButton, index) => {
+    toggleDoneButton.addEventListener("click", () => {
+      toggleTaskDone(index);
+    });
+  });
 };
 
 const init = () => {
